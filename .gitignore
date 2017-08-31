@@ -1,0 +1,8 @@
+.nyc_output
+.coveralls.yml
+coverage
+coverage.lcov
+dist
+es
+lib
+node_modules
