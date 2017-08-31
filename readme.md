@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/maxhallinan/reshep/badge.svg)](https://coveralls.io/github/maxhallinan/reshep)
 
 *Work in progress.*
-A declarative props transformation utility.
+A declarative React component props transformation utility.
 
 
 ## Install

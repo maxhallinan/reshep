@@ -1,7 +1,7 @@
 {
   "name": "reshep",
   "version": "0.0.0",
-  "description": "A declarative props transformation utility.",
+  "description": "A declarative React component props transformation utility.",
   "license": "MIT",
   "repository": {
     "type": "git",
