@@ -21,8 +21,10 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "./node_modules/.bin/eslint src test",
     "prepublishOnly": "npm run clean && npm run build",
-    "test": "cross-env NODE_ENV=test BABEL_ENV=test nyc mocha 'test/**/*.spec.js'",
-    "test:watch": "cross-env NODE_ENV=test BABEL_ENV=test nyc mocha 'test/**/*.spec.js' --watch"
+    "test": "cross-env NODE_ENV=test BABEL_ENV=test jest",
+    "test:watch": "cross-env NODE_ENV=test BABEL_ENV=test jest --watch",
+    "test:foo": "cross-env NODE_ENV=test BABEL_ENV=test nyc jest 'test/**/*.spec.js'",
+    "test:foo:watch": "cross-env NODE_ENV=test BABEL_ENV=test nyc mocha 'test/**/*.spec.js' --watch"
   },
   "author": {
     "name": "Max Hallinan",
@@ -62,7 +64,9 @@
     "chai": "^4.0.2",
     "coveralls": "^2.13.1",
     "cross-env": "^5.0.1",
+    "enzyme": "^2.9.1",
     "eslint": "^4.1.1",
+    "jest": "^20.0.4",
     "mocha": "^3.4.2",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^11.0.3",
@@ -73,7 +77,8 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
-    "rollup-watch": "^4.0.0"
+    "rollup-watch": "^4.0.0",
+    "sinon": "^3.2.1"
   },
   "keywords": [
     "redux",
@@ -84,15 +89,5 @@
     "es",
     "lib",
     "src"
-  ],
-  "nyc": {
-    "all": true,
-    "include": [
-      "src/**/*.js"
-    ],
-    "cache": true,
-    "require": [
-      "./test/helpers/babel-register.js"
-    ]
-  }
+  ]
 }
