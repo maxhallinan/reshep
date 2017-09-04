@@ -1,4 +1,8 @@
+import { mount, } from 'enzyme';
+import 'jest-enzyme';
+import React from 'react';
 import { shapeFrom, } from './../';
+import { path, } from './../util';
 
 describe(`reshep > shapeFrom`, () => {
   test(`To throw a TypeError if pathMap is not an object.`, () => {
@@ -28,12 +32,75 @@ describe(`reshep > shapeFrom`, () => {
     [ 1, null, undefined, [], {}, ].forEach(testErr);
   });
 
-  test(`Returns a higher-order component.`, () => {});
+  test(`Returns a higher-order component.`, () => {
+    const Base = () => React.createElement('p', {}, 'foo');
 
-  test(`Component maps deeply nested props for each entry in \`pathMap\`.`, () => {});
+    const HOC = shapeFrom({})(Base);
 
-  test(`Component passes new props to base component.`, () => {});
+    const wrapped = mount(React.createElement(HOC, {}));
 
-  test(`The shape of the new props matches the shape testd by \`pathMap\``, () => {});
+    expect(wrapped).toContainReact(React.createElement(Base));
+  });
+
+  test(`Component maps deeply nested props for each entry in \`pathMap\`.`, () => {
+    const props = {
+      a: { b: { c: 1, }, },
+      d: { e: 2, },
+      f: 3,
+    };
+
+    const pathMap = {
+      'a.b.c': 'a',
+      'd.e': 'b.c',
+      'f': 'd.e.f',
+    };
+
+    const Base = jest.fn();
+    Base.mockReturnValue(null);
+
+    const HOC = shapeFrom(pathMap)(Base);
+
+    mount(React.createElement(HOC, props));
+
+    const baseProps = Base.mock.calls[0][0];
+
+    Object.keys(pathMap)
+      .map((k) => [ k, pathMap[k], ])
+      .map((paths) => paths.map(p => p.split('.')))
+      .map(([ from, to, ]) =>
+        ([ path(from, props), path(to, baseProps), ]))
+      .forEach(([ from, to ]) => expect(from).toEqual(to));
+  });
+
+  test(`Props received by base component only contains new paths.`, () => {
+    const props = {
+      a: { b: { c: 1, }, },
+      d: { e: 2, },
+      f: 3,
+    };
+
+    const pathMap = {
+      'a.b.c': 'a',
+      'd.e': 'b.c',
+      'f': 'd.e.f',
+    };
+
+    const Base = jest.fn();
+    Base.mockReturnValue(null);
+
+    const HOC = shapeFrom(pathMap)(Base);
+
+    mount(React.createElement(HOC, props));
+
+    const baseProps = Base.mock.calls[0][0];
+
+    const expected = {
+      a: 1,
+      b: { c: 2 },
+      d: { e: { f: 3, }, },
+    };
+
+    expect(baseProps).toEqual(expected);
+  });
 });
 
