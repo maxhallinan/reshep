@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/maxhallinan/reshep.svg?branch=master)](https://travis-ci.org/maxhallinan/reshep)
 [![Coverage Status](https://coveralls.io/repos/github/maxhallinan/reshep/badge.svg)](https://coveralls.io/github/maxhallinan/reshep)
 
+*Work in progress*
+
 Pick deeply nested React component props by path.
 
 
