@@ -3,15 +3,19 @@ export const branch = (predicate) => (left) => (right) => (...xs) =>
     ? right(...xs)
     : left(...xs));
 
-export const compose = (f) => (g) => (x) => f(g(x));
+export const compose = (...fs) => {
+  const gs = fs.reverse();
+
+  return (x) => gs.reduce((y, f) => f(y), x)
+};
 
 export const entries = (src) => Object.keys(src)
-  .map(key => ([ k, src[k], ]));
+  .map(key => ([ key, src[key], ]));
 
-export const getPath = ([k, ...props], src) => (
-  props.length < 1
-  ? src[k]
-  : path(props, src[k]));
+export const getPath = ([key, ...path], src) => (
+  path.length < 1
+  ? src[key]
+  : getPath(path, src[key]));
 
 export const isObject = (x) => typeOf(x) === `object`;
 

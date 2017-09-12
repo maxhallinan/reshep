@@ -2,7 +2,7 @@ import { mount, } from 'enzyme';
 import 'jest-enzyme';
 import React from 'react';
 import { shapeFrom, } from './../';
-import { path, typeOf, } from './../util';
+import { getPath, typeOf, } from './../util';
 
 describe(`reshep > shapeFrom`, () => {
   test(`To throw a TypeError if pathMap is not an object.`, () => {
@@ -17,21 +17,6 @@ describe(`reshep > shapeFrom`, () => {
     };
 
     [ 'foo', 1, null, undefined, [], ].forEach(testErr);
-  });
-
-  test(`To throw a TypeError if the first argument is not an object of strings.`, () => {
-    const errType = TypeError;
-    const errMsg = `Invalid \`pathMap\` entry. Expected \`pathMap\` to be an ` +
-                   `object map of path strings.`;
-
-    const testErr = (x) => {
-      const pathMap = { 'foo.bar': x, };
-
-      expect(() => shapeFrom(pathMap)).toThrow(errType);
-      expect(() => shapeFrom(pathMap)).toThrow(errMsg);
-    };
-
-    [ 1, null, undefined, [], {}, ].forEach(testErr);
   });
 
   test(`Returns a higher-order component.`, () => {
@@ -70,7 +55,7 @@ describe(`reshep > shapeFrom`, () => {
       .map((k) => [ k, pathMap[k], ])
       .map((paths) => paths.map(p => p.split('.')))
       .map(([ from, to, ]) =>
-        ([ path(from, props), path(to, baseProps), ]))
+        ([ getPath(from, props), getPath(to, baseProps), ]))
       .forEach(([ from, to ]) => expect(from).toEqual(to));
   });
 
