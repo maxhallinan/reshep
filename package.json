@@ -67,6 +67,7 @@
     "enzyme": "^2.9.1",
     "eslint": "^4.1.1",
     "jest": "^20.0.4",
+    "jest-cli": "^21.0.2",
     "jest-enzyme": "^3.8.1",
     "mocha": "^3.4.2",
     "mocha-lcov-reporter": "^1.3.0",
@@ -83,9 +84,12 @@
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^4.0.0"
   },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0"
+  },
   "keywords": [
-    "redux",
-    "redux-action"
+    "react",
+    "higher-order component"
   ],
   "files": [
     "dist",

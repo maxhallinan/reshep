@@ -2,17 +2,19 @@ import { mount, } from 'enzyme';
 import 'jest-enzyme';
 import React from 'react';
 import { shapeWith, } from './../';
-import { path, } from './../util';
+import { path, typeOf, } from './../util';
 
 
 describe(`reshep > shapeWith`, () => {
-  test(`Throws a TypeError if the first argument is not an object.`, () => {
-    const errType = TypeError;
-    const errMsg = `tested \`pathmap\` to be an object.`;
+  test(`To throw a TypeError if pathMap is not an object.`, () => {
+    const errType = () => TypeError;
+    const errMsg = (type) => (
+      `Expected \`shapeMap\` to be an object. `
+      + `\`shapeMap\` is type ${type} instead.`);
 
     const testErr = (x) => {
-      expect(() => shapeWith(x)).toThrow(errType);
-      expect(() => shapeWith(x)).toThrow(errMsg);
+      expect(() => shapeWith(x)).toThrow(errType());
+      expect(() => shapeWith(x)).toThrow(errMsg(typeOf(x)));
     };
 
     [ 'foo', 1, null, undefined, [], ].forEach(testErr);

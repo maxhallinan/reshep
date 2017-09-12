@@ -2,16 +2,18 @@ import { mount, } from 'enzyme';
 import 'jest-enzyme';
 import React from 'react';
 import { shapeFrom, } from './../';
-import { path, } from './../util';
+import { path, typeOf, } from './../util';
 
 describe(`reshep > shapeFrom`, () => {
   test(`To throw a TypeError if pathMap is not an object.`, () => {
-    const errType = TypeError;
-    const errMsg = `tested \`pathmap\` to be an object.`;
+    const errType = () => TypeError;
+    const errMsg = (type) => (
+      `Expected \`shapeMap\` to be an object. `
+      + `\`shapeMap\` is type ${type} instead.`);
 
     const testErr = (x) => {
-      expect(() => shapeFrom(x)).toThrow(errType);
-      expect(() => shapeFrom(x)).toThrow(errMsg);
+      expect(() => shapeFrom(x)).toThrow(errType());
+      expect(() => shapeFrom(x)).toThrow(errMsg(typeOf(x)));
     };
 
     [ 'foo', 1, null, undefined, [], ].forEach(testErr);
@@ -19,7 +21,7 @@ describe(`reshep > shapeFrom`, () => {
 
   test(`To throw a TypeError if the first argument is not an object of strings.`, () => {
     const errType = TypeError;
-    const errMsg = `Invalid \`pathMap\` entry. tested \`pathMap\` to be an ` +
+    const errMsg = `Invalid \`pathMap\` entry. Expected \`pathMap\` to be an ` +
                    `object map of path strings.`;
 
     const testErr = (x) => {

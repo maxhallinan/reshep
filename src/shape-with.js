@@ -1,3 +1,10 @@
-const shapeWith = x => x;
+import createElement from './create-element';
+import mapShape from './map-shape';
+import validateShapeMap from './validate-shape-map';
 
-export default shapeWith;
+const shapeWith = (shapeMap) => (BaseComponent) => {
+  return (props) => createElement(BaseComponent, mapShape(shapeMap)(props));
+};
+
+export default validateShapeMap(shapeWith);
+
