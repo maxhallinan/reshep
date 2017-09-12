@@ -5,9 +5,9 @@
 
 *Work in progress*
 
-Pick deeply nested React component props by map of path strings.
+Pick deeply nested React component props from a map of path strings.
 
-A map function alternative when only simple mapping is desired.
+An alternative to map functions when only simple mapping is desired.
 
 
 ## Install
