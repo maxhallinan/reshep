@@ -1,6 +1,7 @@
 import createFactory from './create-factory';
 import mapShape from './map-shape';
 import validateShapeMap from './validate-shape-map';
+import { deepMerge, } from './util';
 
 const shapeWith = (shapeMap) => {
   const mapper = mapShape(shapeMap);
@@ -8,7 +9,7 @@ const shapeWith = (shapeMap) => {
   return (BaseComponent) => {
     const factory = createFactory(BaseComponent);
 
-    return (props) => factory(mapper(props));
+    return (props) => factory(deepMerge(props, mapper(props)));
   };
 };
 

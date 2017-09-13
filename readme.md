@@ -57,7 +57,7 @@ parent props and the value is a path to set on the base component props.
 
 ### shapeWith(pathMap)
 
-Like `shapeFrom`, except the new props are merged with
+Like `shapeFrom`, except the new props are deeply merged with
 the parent props.
 
 #### pathMap

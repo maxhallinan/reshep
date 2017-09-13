@@ -9,6 +9,17 @@ export const compose = (...fs) => {
   return (x) => gs.reduce((y, f) => f(y), x)
 };
 
+export const deepMerge = (...srcs) => compose(
+  reduce((targ, src) =>
+    reduce((t, [ k, v, ]) => {
+      t[k] = isObject(t[k]) && isObject(v) ? deepMerge(t[k], v) : v;
+
+      return t;
+    })(targ)(src)
+  )({}),
+  map(entries)
+)(srcs);
+
 export const entries = (src) => Object.keys(src)
   .map(key => ([ key, src[key], ]));
 
