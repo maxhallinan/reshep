@@ -16,8 +16,8 @@ const getValue = (src) => ([ from, to, ]) => ([ to, getPath(from, src), ]);
 
 const setValue = (targ, [ to, val, ]) => setPath(to, val, targ);
 
-const mapShape = (shapeMap) => {
-  const paths = entries(shapeMap);
+const mapShape = (pathMap) => {
+  const paths = entries(pathMap);
 
   return (props) => compose(
     reduce(setValue)({}),

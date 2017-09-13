@@ -8,8 +8,8 @@ describe(`reshep > shapeWith`, () => {
   test(`To throw a TypeError if pathMap is not an object.`, () => {
     const errType = () => TypeError;
     const errMsg = (type) => (
-      `Expected \`shapeMap\` to be an object. `
-      + `\`shapeMap\` is type ${type} instead.`);
+      `Expected \`pathMap\` to be an object. `
+      + `\`pathMap\` is type ${type} instead.`);
 
     const testErr = (x) => {
       expect(() => shapeWith(x)).toThrow(errType());

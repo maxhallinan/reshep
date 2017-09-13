@@ -2,7 +2,7 @@ import { branch, isObject, typeOf, } from './util';
 
 export const isValid = (input) => isObject(input);
 
-const paramName = `\`shapeMap\``;
+const paramName = `\`pathMap\``;
 
 export const handleInvalid = (input) => {
   throw new TypeError(

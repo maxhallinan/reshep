@@ -2,8 +2,8 @@ import createFactory from './create-factory';
 import mapShape from './map-shape';
 import validateShapeMap from './validate-shape-map';
 
-const shapeFrom = (shapeMap) => {
-  const mapper = mapShape(shapeMap);
+const shapeFrom = (pathMap) => {
+  const mapper = mapShape(pathMap);
 
   return (BaseComponent) => {
     const factory = createFactory(BaseComponent);
