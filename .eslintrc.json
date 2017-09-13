@@ -6,9 +6,10 @@
     },
     "extends": "eslint:recommended",
     "globals": {
-      "before": true,
       "describe": true,
-      "it": true
+      "expect": true,
+      "jest": true,
+      "test": true
     },
     "parserOptions": {
         "ecmaVersion": 6,

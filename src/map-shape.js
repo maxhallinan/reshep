@@ -8,7 +8,7 @@ import {
   split,
 } from './util';
 
-const splitPath = split('.');
+const splitPath = split(`.`);
 
 const splitPaths = map(splitPath);
 
@@ -23,6 +23,6 @@ const mapShape = (shapeMap) => {
     reduce(setValue)({}),
     map(getValue(props)),
     map(splitPaths))(paths);
-}
+};
 
 export default mapShape;

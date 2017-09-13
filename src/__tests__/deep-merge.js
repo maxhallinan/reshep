@@ -43,7 +43,7 @@ describe(`reshep > util > deepMerge`, () => {
     const a = { x: 1, y: 2, };
     const b = { x: 1, y: { z: 2, }, };
     const c = { z: 3, };
-    const d = { x: { y: { z: 3, }, }, }
+    const d = { x: { y: { z: 3, }, }, };
 
     const result = deepMerge(a, b, c, d);
     const expected = { x: { y: { z: 3, }, }, y: { z: 2, }, z: 3, };

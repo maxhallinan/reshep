@@ -16,11 +16,11 @@ describe(`reshep > shapeFrom`, () => {
       expect(() => shapeFrom(x)).toThrow(errMsg(typeOf(x)));
     };
 
-    [ 'foo', 1, null, undefined, [], ].forEach(testErr);
+    [ `foo`, 1, null, undefined, [], ].forEach(testErr);
   });
 
   test(`Returns a higher-order component.`, () => {
-    const Base = () => React.createElement('p', {}, 'foo');
+    const Base = () => React.createElement(`p`, {}, `foo`);
 
     const HOC = shapeFrom({})(Base);
 
@@ -37,9 +37,9 @@ describe(`reshep > shapeFrom`, () => {
     };
 
     const pathMap = {
-      'a.b.c': 'a',
-      'd.e': 'b.c',
-      'f': 'd.e.f',
+      'a.b.c': `a`,
+      'd.e': `b.c`,
+      'f': `d.e.f`,
     };
 
     const Base = jest.fn();
@@ -53,10 +53,10 @@ describe(`reshep > shapeFrom`, () => {
 
     Object.keys(pathMap)
       .map((k) => [ k, pathMap[k], ])
-      .map((paths) => paths.map(p => p.split('.')))
+      .map((paths) => paths.map(p => p.split(`.`)))
       .map(([ from, to, ]) =>
         ([ getPath(from, props), getPath(to, baseProps), ]))
-      .forEach(([ from, to ]) => expect(from).toEqual(to));
+      .forEach(([ from, to, ]) => expect(from).toEqual(to));
   });
 
   test(`Props received by base component only contains new paths.`, () => {
@@ -67,9 +67,9 @@ describe(`reshep > shapeFrom`, () => {
     };
 
     const pathMap = {
-      'a.b.c': 'a',
-      'd.e': 'b.c',
-      'f': 'd.e.f',
+      'a.b.c': `a`,
+      'd.e': `b.c`,
+      'f': `d.e.f`,
     };
 
     const Base = jest.fn();
@@ -83,7 +83,7 @@ describe(`reshep > shapeFrom`, () => {
 
     const expected = {
       a: 1,
-      b: { c: 2 },
+      b: { c: 2, },
       d: { e: { f: 3, }, },
     };
 

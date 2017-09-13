@@ -16,11 +16,11 @@ describe(`reshep > shapeWith`, () => {
       expect(() => shapeWith(x)).toThrow(errMsg(typeOf(x)));
     };
 
-    [ 'foo', 1, null, undefined, [], ].forEach(testErr);
+    [ `foo`, 1, null, undefined, [], ].forEach(testErr);
   });
 
   test(`Returns a higher-order component.`, () => {
-    const Base = () => React.createElement('p', {}, 'foo');
+    const Base = () => React.createElement(`p`, {}, `foo`);
 
     const HOC = shapeWith({})(Base);
 
@@ -37,9 +37,9 @@ describe(`reshep > shapeWith`, () => {
     };
 
     const pathMap = {
-      'a.b.c': 'a',
-      'd.e': 'b.c',
-      'f': 'd.e.f',
+      'a.b.c': `a`,
+      'd.e': `b.c`,
+      'f': `d.e.f`,
     };
 
     const Base = jest.fn();
@@ -53,10 +53,10 @@ describe(`reshep > shapeWith`, () => {
 
     Object.keys(pathMap)
       .map((k) => [ k, pathMap[k], ])
-      .map((paths) => paths.map(p => p.split('.')))
+      .map((paths) => paths.map(p => p.split(`.`)))
       .map(([ from, to, ]) =>
         ([ getPath(from, props), getPath(to, baseProps), ]))
-      .forEach(([ from, to ]) => expect(from).toEqual(to));
+      .forEach(([ from, to, ]) => expect(from).toEqual(to));
   });
 
   test(`Component merges owner props and mapped props.`, () => {
@@ -67,9 +67,9 @@ describe(`reshep > shapeWith`, () => {
     };
 
     const pathMap = {
-      'a.b.c': 'g',
-      'd.e': 'h.i',
-      'f': 'j.k.l',
+      'a.b.c': `g`,
+      'd.e': `h.i`,
+      'f': `j.k.l`,
     };
 
     const Base = jest.fn();
@@ -84,7 +84,7 @@ describe(`reshep > shapeWith`, () => {
     const expected = {
       ...props,
       g: 1,
-      h: { i: 2 },
+      h: { i: 2, },
       j: { k: { l: 3, }, },
     };
 
@@ -99,8 +99,8 @@ describe(`reshep > shapeWith`, () => {
     };
 
     const pathMap = {
-      'a.b.c': 'a',
-      'f': 'd.e',
+      'a.b.c': `a`,
+      'f': `d.e`,
     };
 
     const Base = jest.fn();
