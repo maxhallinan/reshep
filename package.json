@@ -1,7 +1,7 @@
 {
   "name": "reshep",
   "version": "0.0.0",
-  "description": "Pick deeply nested React component props by path.",
+  "description": "A higher-order component that \"reshapes\" a React component props object.",
   "license": "MIT",
   "repository": {
     "type": "git",

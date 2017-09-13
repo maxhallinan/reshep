@@ -5,9 +5,10 @@
 
 *Work in progress*
 
-Pick deeply nested React component props from a map of path strings.
+A higher-order component that "reshapes" a React component props object according
+to a map of from/to path strings.
 
-An alternative to map functions when only simple mapping is desired.
+An alternative to a map function when no value transformation is required.
 
 
 ## Install
