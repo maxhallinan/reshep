@@ -21,14 +21,16 @@
     "transform-regenerator",
     "transform-object-rest-spread"
   ],
-  "ignore": [
-    "**/__tests__/"
-  ],
   "env": {
     "commonjs": {
+      "ignore": [ "**/__tests__/" ],
       "plugins": ["transform-es2015-modules-commonjs"]
     },
+    "es": {
+      "ignore": [ "**/__tests__/" ]
+    },
     "rollup": {
+      "ignore": [ "**/__tests__/" ],
       "plugins": ["external-helpers"]
     },
     "test": {
