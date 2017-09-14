@@ -3,8 +3,6 @@
 [![Build Status](https://travis-ci.org/maxhallinan/reshep.svg?branch=master)](https://travis-ci.org/maxhallinan/reshep)
 [![Coverage Status](https://coveralls.io/repos/github/maxhallinan/reshep/badge.svg)](https://coveralls.io/github/maxhallinan/reshep)
 
-*Work in progress*
-
 A higher-order component that "reshapes" a React component props object according
 to a map of from/to path strings.
 
