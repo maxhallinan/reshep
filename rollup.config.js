@@ -7,7 +7,9 @@ import uglify from 'rollup-plugin-uglify';
 const pkg = require('./package.json');
 const env = process.env.NODE_ENV;
 
-const external = Object.keys(pkg.dependencies);
+const deps = Object.keys(pkg.dependencies);
+const peerDeps = Object.keys(pkg.peerDependencies);
+const external = deps.concat(peerDeps);
 
 const plugins = [
   nodeResolve(),
