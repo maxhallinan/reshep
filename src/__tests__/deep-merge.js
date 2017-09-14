@@ -21,7 +21,7 @@ describe(`reshep > util > deepMerge`, () => {
     expect(result).toEqual(expected);
   });
 
-  test(`Gives merge precedence to right most source.`, () => {
+  test(`Gives merge precedence to right-most source.`, () => {
     const a = { x: { y: 1, }, };
     const b = { x: 2, };
 

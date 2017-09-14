@@ -23,7 +23,7 @@ describe(`reshep > util > setPath`, () => {
     expect(result).toEqual(expected);
   });
 
-  test(`Sets a deep path that does exist`, () => {
+  test(`Sets a deep path that does exist.`, () => {
     const path = [ `a`, `b`, `c`, ];
     const value = true;
     const target = { a: { b: { c: false, d: false, }, }, };

@@ -5,7 +5,7 @@ import { shapeWith, } from './../';
 import { getPath, typeOf, } from './../util';
 
 describe(`reshep > shapeWith`, () => {
-  test(`To throw a TypeError if pathMap is not an object.`, () => {
+  test(`Throws a TypeError if pathMap is not an object.`, () => {
     const errType = () => TypeError;
     const errMsg = (type) => (
       `Expected \`pathMap\` to be an object. `
