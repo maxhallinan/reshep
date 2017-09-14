@@ -28,9 +28,7 @@
     "name": "Max Hallinan",
     "email": "maxhallinan@riseup.net"
   },
-  "dependencies": {
-    "nyc": "^11.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",

@@ -21,6 +21,9 @@
     "transform-regenerator",
     "transform-object-rest-spread"
   ],
+  "ignore": [
+    "**/__tests__/"
+  ],
   "env": {
     "commonjs": {
       "plugins": ["transform-es2015-modules-commonjs"]
