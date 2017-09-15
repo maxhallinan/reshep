@@ -19,23 +19,40 @@ $ npm install --save reshep
 ## Usage
 
 ```javascript
+import assert from 'assert';
 import { shapeFrom, } from 'reshep';
 
 const enhance = shapeFrom({
-  'match.params.fooId': 'fooId'
+  'history.push': 'route.change',
+  'location.state.foo': 'route.foo',
+  'match.params.bar': 'route.bar',
 });
 
-const Foo = enhance(({ fooId, }) => (/*...*/));
+const Foo = enhance(({ route, }) => {
+  assert.ok(route.change);
+  assert.ok(route.foo);
+  assert.ok(route.bar);
+
+  /* ... */
+})
 ```
 
 ```javascript
+import assert from 'assert';
 import { shapeWith, } from 'reshep';
 
 const enhance = shapeWith({
-  'match.params.fooId': 'fooId'
+  'match.params.foo': 'foo',
 });
 
-const Foo = enhance(({ fooId, match, }) => (/*...*/));
+const Foo = enhance(({ match, foo, }) => {
+  assert.ok(foo);
+
+  // parent props are merged with new props
+  assert.ok(match.params.foo);
+
+  /* ... */
+});
 ```
 
 
