@@ -34,7 +34,7 @@ const Foo = enhance(({ route, }) => {
   assert.ok(route.bar);
 
   /* ... */
-})
+});
 ```
 
 ```javascript
