@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel';
 import babelrc from 'babelrc-rollup';
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify';
 
 const pkg = require('./package.json');
@@ -15,6 +16,9 @@ const plugins = [
   nodeResolve(),
   babel(babelrc()),
   commonjs(),
+  replace({
+    'process.env.NODE_ENV': JSON.stringify(env),
+  }),
 ];
 
 const config = {

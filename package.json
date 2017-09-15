@@ -28,7 +28,9 @@
     "name": "Max Hallinan",
     "email": "maxhallinan@riseup.net"
   },
-  "dependencies": {},
+  "dependencies": {
+    "rollup-plugin-replace": "^2.0.0"
+  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
