@@ -1,62 +1,57 @@
 {
     "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true
+      "browser": true,
+      "commonjs": true,
+      "es6": true
     },
     "extends": "eslint:recommended",
     "globals": {
       "describe": true,
       "expect": true,
       "jest": true,
+      "process": true,
       "test": true
     },
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "ecmaFeatures": {
-          "experimentalObjectRestSpread": true
-        },
-        "sourceType": "module"
-    },
+    "parser": "babel-eslint",
     "rules": {
-        "array-bracket-spacing": [
-          "error",
-          "always"
-        ],
-        "comma-dangle": [
-          "error",
-          "always"
-        ],
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "new-cap": [
-          "error",
-          {
-            "capIsNew": false
-          }
-        ],
-        "no-console": [
-          "error"
-        ],
-        "no-self-compare": 1,
-        "object-curly-spacing": [
-          "error",
-          "always"
-        ],
-        "quotes": [
-            "error",
-            "backtick"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "unicorn/explicit-length-check": 0
+      "array-bracket-spacing": [
+        "error",
+        "always"
+      ],
+      "comma-dangle": [
+        "error",
+        "always"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "new-cap": [
+        "error",
+        {
+          "capIsNew": false
+        }
+      ],
+      "no-console": [
+        "error"
+      ],
+      "no-self-compare": 1,
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "quotes": [
+        "error",
+        "backtick"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "unicorn/explicit-length-check": 0
     }
 }

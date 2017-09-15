@@ -120,5 +120,63 @@ describe(`reshep > shapeWith`, () => {
 
     expect(baseProps).toEqual(expected);
   });
+
+  test(`Wraps the displayName of a string component type.`, () => {
+    const pathMap = { 'a': `b`, };
+
+    const HOC = shapeWith(pathMap)(`p`);
+
+    expect(HOC.displayName).toEqual(`shapeWith(p)`);
+  });
+
+  test(`Wraps the displayName of a function component type.`, () => {
+    const pathMap = { 'a': `b`, };
+
+    const Base = () => null;
+
+    const Named = shapeWith(pathMap)(Base);
+    const Anon = shapeWith(pathMap)(() => null);
+
+    expect(Named.displayName).toEqual(`shapeWith(Base)`);
+    expect(Anon.displayName).toEqual(`shapeWith(Component)`);
+  });
+
+  test(`Wraps the displayName of a class component type.`, () => {
+    const pathMap = { 'a': `b`, };
+
+    class Base extends React.Component {
+      static displayName = `Base`;
+
+      render() {
+        return null;
+      }
+    }
+
+    const HOC = shapeWith(pathMap)(Base);
+
+    expect(HOC.displayName).toEqual(`shapeWith(Base)`);
+  });
+
+  test(`Wraps the displayName of a null value.`, () => {
+    const pathMap = { 'a': `b`, };
+
+    const HOC = shapeWith(pathMap)(null);
+
+    expect(HOC.displayName).toEqual(`shapeWith(undefined)`);
+  });
+
+  test(`Does not wrap displayName in production env`, () => {
+    const pathMap = { a: `b`, };
+
+    const Base = () => null;
+
+    process.env.NODE_ENV = `production`;
+
+    const HOC = shapeWith(pathMap)(Base);
+
+    expect(HOC.displayName).toEqual(undefined);
+
+    process.env.NODE_ENV = `test`;
+  });
 });
 
