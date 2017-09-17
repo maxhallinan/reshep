@@ -29,7 +29,6 @@ const enhance = shapeFrom({
 
 const Foo = enhance(({ route, }) => {
   assert.ok(route.change);
-
   assert.ok(route.foo);
 
   /* ... */
