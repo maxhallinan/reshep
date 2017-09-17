@@ -1,6 +1,6 @@
 {
   "name": "reshep",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A higher-order component that \"reshapes\" a React component props object.",
   "license": "MIT",
   "repository": {
