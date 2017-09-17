@@ -25,13 +25,12 @@ import { shapeFrom, } from 'reshep';
 const enhance = shapeFrom({
   'history.push': 'route.change',
   'location.state.foo': 'route.foo',
-  'match.params.bar': 'route.bar',
 });
 
 const Foo = enhance(({ route, }) => {
   assert.ok(route.change);
+
   assert.ok(route.foo);
-  assert.ok(route.bar);
 
   /* ... */
 });
