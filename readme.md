@@ -23,13 +23,14 @@ import assert from 'assert';
 import { shapeFrom, } from 'reshep';
 
 const enhance = shapeFrom({
-  'history.push': 'route.change',
-  'location.state.foo': 'route.foo',
+  'history.push': 'changeRoute',
+  'match.params.foo': 'foo',
 });
 
-const Foo = enhance(({ route, }) => {
-  assert.ok(route.change);
-  assert.ok(route.foo);
+const Foo = enhance(({ changeRoute, foo, }) => {
+  assert.ok(changeRoute);
+
+  assert.ok(foo);
 
   /* ... */
 });
